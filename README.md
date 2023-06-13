@@ -1,3 +1,4 @@
 # RFM_ANALYSIS_MARKETING_PROJECT
 MARKETING ANALYSIS PROJECT: CUSTOMER SEGMENTATION USING RFM ANALYSIS AND BCG MATRIX
-Full dataset: https://1drv.ms/f/s!Arnzr_jb5-zcgr8lJwC4DxbYAUqY7g?e=Rsi4Ug
+Full poject : https://1drv.ms/f/s!Arnzr_jb5-zcgr5uMSBkOmfJfZOs9w?e=kVEy0z
+
