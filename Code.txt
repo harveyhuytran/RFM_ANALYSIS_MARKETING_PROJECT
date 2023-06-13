@@ -1,4 +1,4 @@
-- code bằng azue của anh Long :))) MySQL gà --
+
 select *,  
 	ntile(4) over (order by Recency ASC) as R,
 	ntile(4) over (order by Frequency ASC) as F, 
@@ -27,37 +27,5 @@ SELECT
 FROM c8_final_project cfp 
 GROUP BY RFM
 order by percent_customer desc 
-
--- code bằng mysql 
-SELECT *,
-    NTILE(4) OVER (ORDER BY Recency ASC) AS R,
-    NTILE(4) OVER (ORDER BY Frequency ASC) AS F,
-    NTILE(4) OVER (ORDER BY Monetary ASC) AS M,
-    CONCAT(
-        NTILE(4) OVER (ORDER BY Recency ASC),
-        NTILE(4) OVER (ORDER BY Frequency ASC),
-        NTILE(4) OVER (ORDER BY Monetary ASC)
-    ) AS RFM
-FROM (
-    SELECT
-        ct.customeriD,
-        DATEDIFF('2023-06-02', MAX(purchase_date)) AS Recency,
-        (COUNT(DISTINCT ct.Purchase_Date) / DATEDIFF('2023-06-02', MAX(purchase_date))) AS Frequency,
-        (SUM(ct.GMV) / DATEDIFF('2023-06-02', MAX(purchase_date))) AS Monetary
-    FROM c8_customer_registered ct
-    JOIN c8_customer_registered cr on ct.customerid = cr.ID
-    WHERE cr.stopdate IS NULL AND cr.id != 0
-    GROUP BY ct.CustomerID
-) a;
-
-SELECT
-    RFM,
-    ROUND((COUNT(customerID) / 1048522) * 100, 2) AS percent_customer
-FROM c8_final_project cfp
-GROUP BY RFM
-ORDER BY percent_customer DESC;
-
-SELECT COUNT(DISTINCT customerID)
-FROM c8_final_project cfp;
 
 
